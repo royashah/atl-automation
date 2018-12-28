@@ -93,7 +93,7 @@ public class Communication {
 
     private static WebDriver chooseTrueDriver() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--proxy-server=socks5://localhost:1200");
+//        chromeOptions.addArguments("--proxy-server=socks5://localhost:1200");
         switch (System.getProperty("os.name")){
             case "Linux":
                 setProperties("/Drivers/chromedriver_linux");
