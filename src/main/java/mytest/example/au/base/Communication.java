@@ -3,7 +3,6 @@ package mytest.example.au.base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -92,16 +91,17 @@ public class Communication {
     }
 
     private static WebDriver chooseTrueDriver() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--proxy-server=socks5://localhost:1200");
         switch (System.getProperty("os.name")){
             case "Linux":
                 setProperties("/Drivers/chromedriver_linux");
-                return new ChromeDriver(chromeOptions);
-            case "Windows":
+                return new ChromeDriver();
+            case "Windows 7":
                 setProperties("/Drivers/chromedriver.exe");
                 return new ChromeDriver();
-            case "MacOS":
+            case "Windows 10":
+                setProperties("/Drivers/chromedriver.exe");
+                return new ChromeDriver();
+            case "Mac OS X":
                 setProperties("/Drivers/chromedriver_mac");
                 return new ChromeDriver();
             default:
@@ -109,7 +109,7 @@ public class Communication {
         }
     }
 
-    private static WebDriver setDelayProperties(WebDriver webDriver){
+private static WebDriver setDelayProperties(WebDriver webDriver){
         webDriver.manage().timeouts().implicitlyWait(implicitWait,TimeUnit.MILLISECONDS);
 //        webDriver.manage().timeouts().pageLoadTimeout(1000,TimeUnit.MILLISECONDS);
         return webDriver;
